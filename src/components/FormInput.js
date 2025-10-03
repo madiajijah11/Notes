@@ -1,6 +1,16 @@
 import React from "react";
 
+/**
+ * A form component for creating a new note.
+ * It maintains its own state for the title and body of the note.
+ * @extends React.Component
+ */
 class FormInput extends React.Component {
+  /**
+   * Initializes the component's state and binds event handlers.
+   * @param {Object} props - The component's props.
+   * @param {function(Object): void} props.addNote - The function to call when adding a new note.
+   */
   constructor(props) {
     super(props);
 
@@ -15,6 +25,11 @@ class FormInput extends React.Component {
     this.onSubmitEvent = this.onSubmitEvent.bind(this);
   }
 
+  /**
+   * Handles changes to the title input field.
+   * Updates the title and remaining character count in the state.
+   * @param {React.ChangeEvent<HTMLInputElement>} event - The change event.
+   */
   onTitleChange(event) {
     this.setState((prev) => {
       return {
@@ -24,6 +39,11 @@ class FormInput extends React.Component {
     });
   }
 
+  /**
+   * Handles changes to the body textarea field.
+   * Updates the body in the state.
+   * @param {React.ChangeEvent<HTMLTextAreaElement>} event - The change event.
+   */
   onBodyChange(event) {
     this.setState(() => {
       return {
@@ -32,11 +52,20 @@ class FormInput extends React.Component {
     });
   }
 
+  /**
+   * Handles the form submission.
+   * Prevents the default form submission behavior and calls the `addNote` prop.
+   * @param {React.FormEvent<HTMLFormElement>} event - The submit event.
+   */
   onSubmitEvent(event){
     event.preventDefault()
     this.props.addNote(this.state)
   }
 
+  /**
+   * Renders the note input form.
+   * @returns {JSX.Element} The rendered component.
+   */
   render() {
     return (
       <div className="note-input">
