@@ -1,5 +1,17 @@
 const {showFormattedDate} = require('../utils')
 
+/**
+ * A component that displays a single note item.
+ * @param {Object} props - The component's props.
+ * @param {string} props.title - The title of the note.
+ * @param {string} props.createdAt - The creation date of the note.
+ * @param {string} props.body - The content of the note.
+ * @param {function(number): void} props.changeArchive - The function to call when changing the archive status of the note.
+ * @param {number} props.id - The unique identifier for the note.
+ * @param {string} props.change - The text to display on the archive/unarchive button.
+ * @param {function(number): void} props.onDelete - The function to call when deleting the note.
+ * @returns {JSX.Element} The rendered component.
+ */
 const NoteItem = ({ title, createdAt, body, changeArchive, id, change, onDelete }) => {
 
   return (
